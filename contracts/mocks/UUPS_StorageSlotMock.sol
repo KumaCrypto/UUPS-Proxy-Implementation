@@ -1,13 +1,13 @@
 //SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
-import {UUPS_StorageSlot} from "../UUPS_StorageSlot.sol";
+import {ERC1967UpgradeUUPS} from "../ERC1967UpgradeUUPS.sol";
 
 /**
  * @title Mock contract for testing <UUPS_StorageSlot>
  * @author Vladimir Kumalagov
  */
-contract UUPS_StorageSlotMock is UUPS_StorageSlot {
+contract ERC1967UpgradeUUPSMock is ERC1967UpgradeUUPS {
 	// Return address of the implementation
 	function getImplementation() external view returns (address) {
 		return _getImplementation();
@@ -19,7 +19,7 @@ contract UUPS_StorageSlotMock is UUPS_StorageSlot {
 		}
 	}
 
-	function getImplementationSlot() external pure returns (uint256) {
+	function getImplementationSlot() external pure returns (bytes32) {
 		return IMPL_SLOT;
 	}
 }
