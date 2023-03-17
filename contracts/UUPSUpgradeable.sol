@@ -2,22 +2,17 @@
 pragma solidity 0.8.19;
 
 // Interfaces
-import {IERC1822Proxiable} from "./interfaces/IERC1822Proxiable.sol";
-import {IUUPSUpgradeableErrors} from "./errors/IUUPSUpgradeableErrors.sol";
+import {IUUPSUpgradeable} from "./interfaces/IUUPSUpgradeable.sol";
 
 // Contracts
-import {ERC1967UpgradeUUPS} from "./ERC1967UpgradeUUPS.sol";
+import {ERC1967Base} from "./ERC1967Base.sol";
 
-abstract contract UUPSUpgradeable is
-	IERC1822Proxiable,
-	IUUPSUpgradeableErrors,
-	ERC1967UpgradeUUPS
-{
+abstract contract UUPSUpgradeable is IUUPSUpgradeable, ERC1967Base {
 	// During the deployment of the implementation, address(this) will be the implementation address.
 	address private immutable __self = address(this);
 
 	modifier onlyProxy() {
-		// Onle delegatecall accepted
+		// Only delegatecall accepted
 		if (address(this) == __self) revert UUPSUpgradeable__notDelegateCall();
 
 		// Delegatecall not from active implementation
@@ -34,7 +29,7 @@ abstract contract UUPSUpgradeable is
 	}
 
 	// Initializes the smart-contract update, without an additional call.
-	function upgradeTo(address newImplementation) public onlyProxy {
+	function upgradeTo(address newImplementation) external onlyProxy {
 		_authorizeUpgrade(newImplementation);
 		_upgradeToAndCallUUPS(newImplementation, new bytes(0), false);
 	}
@@ -43,7 +38,7 @@ abstract contract UUPSUpgradeable is
 	function upgradeToAndCall(
 		address newImplementation,
 		bytes memory data
-	) public onlyProxy {
+	) external onlyProxy {
 		_authorizeUpgrade(newImplementation);
 		_upgradeToAndCallUUPS(newImplementation, data, true);
 	}
