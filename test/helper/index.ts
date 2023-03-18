@@ -1,8 +1,10 @@
 export {
+	expect,
 	ethers,
 	BigNumber,
 	SignerWithAddress,
 	loadFixture,
-	expect,
+	mine,
 } from "./libs";
-export { createFixture, ContractType } from "./createFixture";
+
+export { ProxyFixtureFactory } from "./ProxyFixtureFactory";

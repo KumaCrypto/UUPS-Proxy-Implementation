@@ -6,10 +6,19 @@ import {IUUPSUpgradeable} from "./interfaces/IUUPSUpgradeable.sol";
 
 // Contracts
 import {ERC1967Base} from "./ERC1967Base.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-abstract contract UUPSUpgradeable is IUUPSUpgradeable, ERC1967Base {
+abstract contract UUPSUpgradeable is
+	IUUPSUpgradeable,
+	Initializable,
+	ERC1967Base
+{
 	// During the deployment of the implementation, address(this) will be the implementation address.
 	address private immutable __self = address(this);
+
+	constructor() {
+		_disableInitializers();
+	}
 
 	modifier onlyProxy() {
 		// Only delegatecall accepted
