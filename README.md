@@ -70,3 +70,9 @@ The UUPS smart contract provided herein has not been audited by any third-party 
 # License
 
 This repository is licensed under the MIT License. See the LICENSE file for more information.
+
+---
+
+### Special thanks
+
+Thanks to ChatGPT for part of this README 😊
