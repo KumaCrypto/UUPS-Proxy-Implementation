@@ -7,4 +7,4 @@ export {
 	mine,
 } from "./libs";
 
-export { ProxyFixtureFactory } from "./ProxyFixtureFactory";
+export { ProxyManager } from "./ProxyManager";

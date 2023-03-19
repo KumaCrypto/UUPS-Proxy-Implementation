@@ -4,12 +4,12 @@ pragma solidity 0.8.19;
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {UUPSUpgradeable} from "../UUPSUpgradeable.sol";
 
-contract UUPSUpgradeableTest is UUPSUpgradeable, OwnableUpgradeable {
+contract UUPSUpgradeableTestV1 is UUPSUpgradeable, OwnableUpgradeable {
 	function initialize() external initializer {
 		__Ownable_init();
 	}
 
-	function getVersion() external pure returns (uint256) {
+	function getVersion() external pure virtual returns (uint256) {
 		return 1;
 	}
 
