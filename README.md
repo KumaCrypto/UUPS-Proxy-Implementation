@@ -51,7 +51,7 @@ Then, run the tests:
 
 ## Usage
 
-In order to use the UUPS functionality, you need to inherit from `UUPSUpgradeable` and rewrite the `\_authorizeUpgrade` function with the authorization functionality you need.
+In order to use the UUPS functionality, you need to inherit from `UUPSUpgradeable` and rewrite the `_authorizeUpgrade` function with the authorization functionality you need.
 
 The proxy logic itself is located in the `Proxy` folder.
 
